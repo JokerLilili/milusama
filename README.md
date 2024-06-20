@@ -1,1 +1,5 @@
 # milusama
+
+yarn
+
+yarn dev
