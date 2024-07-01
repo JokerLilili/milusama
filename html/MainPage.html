@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main-bg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .main-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            height: 100%;
+            width: auto;
+            object-fit: cover;
+        }
+
+        #canvas {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-bg">
+        <video
+          class="main-video"
+          width="100%"
+          height="100%"
+          autoPlay
+          loop
+          muted
+        >
+          <source src="/img/bg.mp4" type="video/mp4" />
+        </video>
+        <canvas id="canvas"></canvas>
+      </div>
+      <script src="../js/main.js"></script>
+      <script src="../js/universe.js"></script>
+</body>
+</html>
