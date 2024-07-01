@@ -5,9 +5,70 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React + TS</title>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<!-- common styles -->
+		<link rel="stylesheet" type="text/css" href="css/dialog.css" />
+		<!-- individual effect -->
+		<link rel="stylesheet" type="text/css" href="css/dialog-wilma.css" />
+
+    <link rel="stylesheet" type="text/css" href="css/normalize-input.css" />
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/default.css">
+    <link rel="stylesheet" type="text/css" href="css/set2.css" />
+
+    <link rel="stylesheet" type="text/css" href="css/base.css" />
+    
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
+		<script src="js/modernizr.custom.js"></script>
   </head>
   <body>
     <div id="root"></div>
+
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script  src="js/index.js"></script>
+
+    <script src="js/classie-input.js"></script>
+    
+		<script src="js/classie.js"></script>
+		<script src="js/dialogFx.js"></script>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      (function () {
+          if (!String.prototype.trim) {
+              (function () {
+                  // Make sure we trim BOM and NBSP
+                  var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+                  String.prototype.trim = function () {
+                      return this.replace(rtrim, '');
+                  };
+              })();
+          }
+
+          [ ].slice.call(document.querySelectorAll('input.input__field')).forEach(function (inputEl) {
+              // in case the input is already filled..
+              if (inputEl.value.trim() !== '') {
+                  classie.add(inputEl.parentNode, 'input--filled');
+              }
+
+              // events:
+              inputEl.addEventListener('focus', onInputFocus);
+              inputEl.addEventListener('blur', onInputBlur);
+          });
+
+          function onInputFocus(ev) {
+              classie.add(ev.target.parentNode, 'input--filled');
+          }
+
+          function onInputBlur(ev) {
+              if (ev.target.value.trim() === '') {
+                  classie.remove(ev.target.parentNode, 'input--filled');
+              }
+          }
+      })();
+  </script>
   </body>
 </html>
