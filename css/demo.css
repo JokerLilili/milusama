@@ -30,7 +30,7 @@ a, button {
 }
 
 a:hover, a:focus {
-	color: #c94e50;
+	/* color: #c94e50; */
 	outline: none;
 }
 

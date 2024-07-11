@@ -5,11 +5,11 @@
   const FRAME_RATE = 60
   const PARTICLE_NUM = 2000
   const RADIUS = Math.PI * 2
-  const CANVASWIDTH = 1000
-  const CANVASHEIGHT = 300
+  const CANVASWIDTH = isMobile() ? window.screen.width : 800
+  const CANVASHEIGHT = isMobile() ? 200 : 300
   const CANVASID = 'canvas'
 
-  let texts = ['MY DEAR', 'LOOK UP AT THE', 'STARRY SKY', 'ARE YOU', 'LOOKING AT THE', 'SAME STAR', 'WITH ME ?', 'HAPPY', 'CHINESE', 'VALENTINE\'S', 'DAY', 'I MISS YOU']
+  let texts = ['亲爱的主人', '生日快乐！', '狗狗对主人的爱', '不离不弃', '一往而深', '希望能与主人', '长长久久', '一生一世', '—— 最爱你的狗狗']
 
   let canvas,
     ctx,
@@ -17,7 +17,11 @@
     quiver = true,
     text = texts[0],
     textIndex = 0,
-    textSize = 70
+    textSize = isMobile() ? 42 : 70
+
+  function isMobile() { 
+    return ('ontouchstart' in document.documentElement); 
+  }
 
   function draw () {
     ctx.clearRect(0, 0, CANVASWIDTH, CANVASHEIGHT)
@@ -108,33 +112,36 @@
     canvas.width = CANVASWIDTH
     canvas.height = CANVASHEIGHT
     canvas.style.position = 'absolute'
-    canvas.style.left = '0%'
-    canvas.style.top = '0%'
-    canvas.style.bottom = '0%'
-    canvas.style.right = '0%'
-    canvas.style.marginTop = window.innerHeight * .15 + 'px'
+    // canvas.style.left = '0%'
+    // canvas.style.top = '0%'
+    // canvas.style.bottom = '0%'
+    // canvas.style.right = '0%'
+    // canvas.style.marginTop = window.innerHeight * .15 + 'px'
   }
 
   function event () {
-    document.addEventListener('click', function (e) {
-      textIndex++
-      if (textIndex >= texts.length) {
-        textIndex--
-        return
-      }
-      text = texts[textIndex]
-      console.log(textIndex)
-    }, false)
+    if (isMobile()) {
+      document.addEventListener('touchstart', function (e) {
+        textIndex++
+        if (textIndex >= texts.length) {
+          textIndex = 0
+          // return
+        }
+        text = texts[textIndex]
+        console.log(textIndex)
+      }, false)
+    } else {
+      document.addEventListener('click', function (e) {
+        textIndex++
+        if (textIndex >= texts.length) {
+          textIndex = 0
+          // return
+        }
+        text = texts[textIndex]
+        console.log(textIndex)
+      }, false)
+    }
 
-    document.addEventListener('touchstart', function (e) {
-      textIndex++
-      if (textIndex >= texts.length) {
-        textIndex--
-        return
-      }
-      text = texts[textIndex]
-      console.log(textIndex)
-    }, false)
   }
 
   function init () {
@@ -156,7 +163,7 @@
   class Particle {
     constructor (canvas) {
       let spread = canvas.height
-      let size = Math.random() * 1.2
+      let size = Math.random() * 1.2 + 0.5
       // 速度
       this.delta = 0.06
       // 现在的位置
@@ -209,10 +216,10 @@
     }
   }
   
-  var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-    if(!isChrome){
-      $('#iframeAudio').remove()
-  }
+  // var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+  //   if(!isChrome){
+  //     $('#iframeAudio').remove()
+  // }
   
   // setTimeout(() => {
     init()  

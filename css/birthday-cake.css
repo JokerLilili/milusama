@@ -223,8 +223,9 @@ body {
 	z-index:100;
 }
 .button-style1 {
+	cursor: pointer;
 	position:absolute;
-	left:20%;
+	left: calc(50% - 85px);
 	animation:btn1 15s;
 }
 .button-style2 {
@@ -235,29 +236,29 @@ body {
 @keyframes btn1 {
 	0% {
 		opacity:0;
-		left:43.5%;
+		top:20%;
 	}
 	70% {
 		opacity:0;
-		left:43.5%;
+		top:20%;
 	}
 	100% {
 		opacity:1;
-		left:20%;
+		top:70%;
 	}
 }
 @-webkit-keyframes btn1 {
 	0% {
 		opacity:0;
-		left:43.5%;
+		top:20%;
 	}
 	70% {
 		opacity:0;
-		left:43.5%;
+		top:20%;
 	}
 	100% {
 		opacity:1;
-		left:20%;
+		top:70%;
 	}
 }
 @keyframes btn2 {

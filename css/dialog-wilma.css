@@ -48,6 +48,11 @@
 	-webkit-transition: opacity 0.85s 0.35s;
 	transition: opacity 0.85s 0.35s;
 }
+@media screen and (max-width: 500px) {
+	.dialog--open .dialog-inner {
+		padding: 2em 1em;
+	}
+}
 
 .dialog.dialog--open h2 {
 	-webkit-animation: anim-elem-1 0.7s ease-out both;

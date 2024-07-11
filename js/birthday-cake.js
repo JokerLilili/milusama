@@ -16,5 +16,9 @@ function loadScript(url) {
 }
 
 $('#toMain').on('click', function () {
-    location.href="MainPage.html";
+    const inputValue = document.getElementById("input-6").value
+    if (inputValue === 'lovemilu') {
+        document.getElementById("input-6").value = ''
+        location.href="MainPage.html";
+    }
 })
