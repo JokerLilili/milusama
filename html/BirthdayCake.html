@@ -32,6 +32,22 @@
   
   <script src="../js/classie.js"></script>
   <script src="../js/dialogFx.js"></script>
+  <style>
+      body {  
+          cursor: url(../mouse/Arrow.cur),auto;
+      }
+  
+      a, button{
+          cursor: url(../mouse/Hand.cur),auto;
+      }
+      
+      p, span, h1, h2, h3, h4, h5, pre{
+          cursor: url(../mouse/Handwriting.cur),auto; 
+      }
+      .password-img h3 {
+          cursor: url(../mouse/Hand.cur),auto;
+      }
+  </style>
 </head>
 
 <body>
@@ -323,5 +339,35 @@
           }
       }
   })();
+</script>
+<script type="text/javascript">
+    /* 鼠标点击特效 */
+    var a_idx = 0;
+    jQuery(document).ready(function($) {
+        $("body").click(function(e) {
+            var a = new Array('٩(๑•̀ω•́๑)۶', 'ε(*･ω･)_/ﾟ:･☆', '(✧∇✧)', '(♡ ὅ ◡ ὅ )ʃ♡', '╮( •́ω•̀ )╭', '(՞•Ꙫ•՞)ﾉ????', 'ʕ ᵔᴥᵔ ʔ' ,'o( ❛ᴗ❛ )o', 'ξ( ✿＞◡❛)', '(   ･᷅ὢ･᷄ )', '*⸜( •ᴗ• )⸝*');
+            var $i = $('<span/>').text(a[a_idx]);
+            a_idx = (a_idx + 1) % a.length;
+            var x = e.pageX,
+            y = e.pageY;
+            $i.css({
+                'z-index': 999999999999999999999999999999999999999999999999999999999999999999999,
+                'top': y - 20,
+                'left': x,
+                'position': 'absolute',
+                'font-weight': 'bold',
+                'color': '#ff6651'
+            });
+            $('body').append($i);
+            $i.animate({
+                'top': y - 180,
+                'opacity': 0
+            },
+            1500,
+            function() {
+                $i.remove();
+            });
+        });
+    });
 </script>
 </html>
